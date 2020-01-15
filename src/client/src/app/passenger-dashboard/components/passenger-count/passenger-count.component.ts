@@ -18,8 +18,6 @@ export class PassengerCountComponent {
     items: Passenger[];
     checkedInCount(): number {
         if (!this.items) return;
-        return this.items.filter((passenger: Passenger) => {
-            return passenger.checkedIn;
-        }).length;
+        return this.items.filter((passenger: Passenger) => passenger.checkedIn).length;
     }
 }
