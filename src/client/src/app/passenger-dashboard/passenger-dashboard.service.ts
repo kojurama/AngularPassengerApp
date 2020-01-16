@@ -1,45 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { Passenger } from './models/passenger.interface';
 
+const PASSENGER_API: string = '/api/passengers';
 
 @Injectable()
 export class PassengerDashboardService {
     constructor(private http: HttpClient) {}
 
-    getPassengers(): Passenger[] {
-        return [{
-            id: 1,
-            fullname: 'Stephen',
-            checkedIn: true,
-            checkInDate: 1490742000000,
-            children: null
-          }, {
-            id: 2,
-            fullname: 'Rose',
-            checkedIn: false,
-            checkInDate: null,
-            children: [{ name: 'Ted', age: 12 }, { name: 'Chloe', age: 7 }]
-          }, {
-            id: 3,
-            fullname: 'James',
-            checkedIn: true,
-            checkInDate: 1491606000000,
-            children: null
-          }, {
-            id: 4,
-            fullname: 'Louise',
-            checkedIn: true,
-            checkInDate: 1488412800000,
-            children: [{ name: 'Frankie', age: 7}]
-          }, {
-            id: 5,
-            fullname: 'Lauren',
-            checkedIn: false,
-            checkInDate: null,
-            children: null
-          }];
+    getPassengers(): Observable<Passenger[]> {
+        return this.http.get<Passenger[]>(PASSENGER_API);
     }
-
 }
