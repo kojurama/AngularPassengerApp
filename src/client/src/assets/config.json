@@ -1,0 +1,4 @@
+{
+    "passengersUrl": "api/passengers",
+    "passengerArray": "assets/db.json"
+}
