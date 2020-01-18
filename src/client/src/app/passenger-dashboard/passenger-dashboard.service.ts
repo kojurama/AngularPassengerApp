@@ -14,12 +14,19 @@ const httpOptions = {
 
 @Injectable()
 export class PassengerDashboardService {
-    baseUrl = 'http://localhost:4000/passengers';
+    baseUrl = 'http://localhost:3000/passengers';
     constructor(private http: HttpClient) {}
 
     getPassengers(): Observable<Passenger[]> {
         return this.http
         .get<Passenger[]>(`${this.baseUrl}`, httpOptions)
+        .pipe(retry(1),
+        catchError(this.handleError));
+    }
+
+    getPassenger(id: number): Observable<Passenger> {
+        return this.http
+        .get<Passenger>(`${this.baseUrl}/${id}`, httpOptions)
         .pipe(retry(1),
         catchError(this.handleError));
     }
