@@ -49,31 +49,3 @@ export class PassengerDashboardService {
     };
 }
 
-/*
-  // PUT
-  UpdateBug(id, data): Observable<Bug> {
-    return this.http
-    .put<Bug>(this.baseurl + '/bugtracking/' + id, JSON.stringify(data), this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    )
-  
-
-    @Injectable()
-export class PassengerDashboardService {
-    constructor(private http: HttpClient) {}
-    baseUrl = 'http://localhost:4000';
-
-    getPassengers(): Observable<Passenger[]> {
-        return this.http
-        .get<Passenger[]>(`${this.url}/passengers`);
-    }
-
-    updatePassengers(passenger: Passenger): Observable<Passenger> {
-        return this.http
-        .put<Passenger>(`${this.url}/${passenger.id}`, passenger);
-    }
-}
-
-*/
